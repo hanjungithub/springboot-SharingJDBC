@@ -1,0 +1,55 @@
+server:
+  port: 8765
+spring:
+  application:
+    #设置应用名称
+    name: "base-project"
+  profiles:
+    #项目环境
+    active: dev
+  aop:
+    #指定动态代理使用cglib方式endpoint
+    proxy-target-class: true
+  jackson:
+    #序列化自动转date
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  resources:
+    #静态资源目录
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/static/,classpath:/static/,classpath:/public
+  servlet:
+    multipart:
+      #上传单个文件大小限制
+      max-file-size: 100MB
+      #总上传文件大小限制
+      max-request-size: 500MB
+  #后台跳转静态页面强制转换UTF-8编码
+  http:
+    encoding:
+      force: true
+  main:
+    allow-bean-definition-overriding: true
+#日志存放路径
+logback:
+  path: logs
+mapper:
+  #通用模板查询mapper配置
+  not-empty: false
+  order: BEFORE
+  identity: SELECT REPLACE(UUID(),''-'','''')
+mybatis-plus:
+  configuration:
+    #允许mybatis输入参数为空
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: 'NULL'
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #自动装配mybatis.xml,classhpath*可以找到jar包里面去
+  mapper-locations: classpath*:com.example/**/*.xml
+  #用来指定bean在哪个包里，避免存在同名class时找不到bean
+  type-aliases-package: com.example.**.model,com.example.**.domain,com.example.**.vo
+pagehelper:
+  helperDialect: mysql
+  params: count=countSql
+  reasonable: true
+  #分页插件可以自动拦截请求参数中的pageNum,pageSize参数
+  supportMethodsArguments: true

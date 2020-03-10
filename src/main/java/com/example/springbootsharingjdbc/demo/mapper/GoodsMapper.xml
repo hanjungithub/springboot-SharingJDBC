@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootsharingjdbc.demo.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.example.springbootsharingjdbc.demo.model.Goods">
+    <!--@mbg.generated-->
+    <!--@Table goods-->
+    <id column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_type" jdbcType="BIGINT" property="goodsType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    goods_id, goods_name, goods_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.springbootsharingjdbc.demo.model.Goods">
+    <!--@mbg.generated-->
+    insert into goods (goods_id, goods_name, goods_type
+      )
+    values (#{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsType,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.springbootsharingjdbc.demo.model.Goods">
+    <!--@mbg.generated-->
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsType != null">
+        goods_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springbootsharingjdbc.demo.model.Goods">
+    <!--@mbg.generated-->
+    update goods
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        goods_type = #{goodsType,jdbcType=BIGINT},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.springbootsharingjdbc.demo.model.Goods">
+    <!--@mbg.generated-->
+    update goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=BIGINT}
+    where goods_id = #{goodsId,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteAll" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from goods
+  </delete>
+
+
+  <select id="findAllByGoodsIdBetween" resultMap="BaseResultMap">
+    select * from goods where goods_id between #{param1} and #{param2}
+  </select>
+  <select id="findAllByGoodsIdIn" resultMap="BaseResultMap"></select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from goods
+  </select>
+
+</mapper>
