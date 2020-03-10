@@ -22,7 +22,7 @@ public interface GoodsMapper {
 
     List<Goods> findAllByGoodsIdBetween(@Param("param1") long l, @Param("param2") long l1);
 
-    Object findAllByGoodsIdIn(List<Long> goodsIds);
+    List<Goods> findAllByGoodsIdIn(List<Long> goodsIds);
 
     List<Goods> selectAll();
 }

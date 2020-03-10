@@ -87,7 +87,13 @@
   <select id="findAllByGoodsIdBetween" resultMap="BaseResultMap">
     select * from goods where goods_id between #{param1} and #{param2}
   </select>
-  <select id="findAllByGoodsIdIn" resultMap="BaseResultMap"></select>
+  <select id="findAllByGoodsIdIn" resultMap="BaseResultMap">
+    select * from goods where goods_id in
+    <foreach collection="list" item="item"  open="(" close=")" separator=",">
+    #{item}
+  </foreach>
+    order by goods_id
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select * from goods
   </select>

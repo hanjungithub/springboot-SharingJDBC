@@ -20,9 +20,19 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="ShardingSphere-SQL" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
     <root level="ERROR">
         <appender-ref ref="All_FILE"/>
     </root>
+
     <logger name="org.springframework.boot" level="ERROR"/>
     <logger name="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" level="ERROR" />
 </configuration>
