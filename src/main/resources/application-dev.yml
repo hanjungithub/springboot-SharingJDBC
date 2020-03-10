@@ -28,12 +28,12 @@ sharding:
             #algorithm-expression: ds$->{goods_id <= 20 ? 0:1}
         tables:
           goods:
-            actual-data-nodes: ds$->{0..1}.goods_$->{0..1}
-            table-strategy:
-              standard:
-                sharding-column: goods_type
-                range-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTableRangeShardingAlgorithm
-                precise-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTablePreciseShardingAlgorithm
+            actual-data-nodes: ds$->{0..1}.goods
+            #table-strategy:
+              #standard:
+                #sharding-column: goods_type
+                #range-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTableRangeShardingAlgorithm
+                #precise-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTablePreciseShardingAlgorithm
               #inline:
                 #sharding-column: goods_type
                 #algorithm-expression: goods_$->{goods_type % 2}

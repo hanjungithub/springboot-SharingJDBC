@@ -75,4 +75,12 @@ public class GoodsController {
         goodsIds.add(25L);
         return goodsMapper.findAllByGoodsIdIn(goodsIds);
     }
+
+    @GetMapping("selectByGoodsName")
+    public Object selectByGoodsName(){
+        Goods goods = new Goods();
+        goods.setGoodsName("shangpin30");
+        goods.setGoodsId(30L);
+        return goodsMapper.selectByGoodsName(goods);
+    }
 }

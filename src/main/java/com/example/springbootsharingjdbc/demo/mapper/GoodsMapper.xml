@@ -98,4 +98,8 @@
     select * from goods
   </select>
 
+  <select id="selectByGoodsName" resultMap="BaseResultMap">
+    select * from goods where goods_name =  #{goodsName} and goods_id = #{goodsId}
+  </select>
+
 </mapper>
