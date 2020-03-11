@@ -1,0 +1,54 @@
+sharding:
+  jdbc:
+    datasource:
+      names: ds0
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/sharing-0?useUnicode=true&characterEncoding=utf-8&useAffectedRows=true&allowMultiQueries=true
+        username: root
+        password: admin
+      #ds1:
+        #type: com.alibaba.druid.pool.DruidDataSource
+        #driver-class-name: com.mysql.jdbc.Driver
+        #url: jdbc:mysql://localhost:3306/sharing-1?useUnicode=true&characterEncoding=utf-8&useAffectedRows=true&allowMultiQueries=true
+        #username: root
+        #password: admin
+
+    config:
+      sharding:
+        default-data-source-name: ds0
+        #default-database-strategy:
+          #standard:
+            #sharding-column: goods_id
+            #range-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsDatabaseRangeShardingAlgorithm
+            #precise-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsDatabasePreciseShardingAlgorithm
+          #inline:
+            #sharding-column: goods_id
+            #algorithm-expression: ds$->{goods_id <= 20 ? 0:1}
+        tables:
+          goods:
+            actual-data-nodes: ds0.goods_$->{0..1}
+            table-strategy:
+              standard:
+                sharding-column: goods_type
+                range-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTableRangeShardingAlgorithm
+                precise-algorithm-class-name: com.example.springbootsharingjdbc.demo.config.GoodsTablePreciseShardingAlgorithm
+              #inline:
+                #sharding-column: goods_type
+                #algorithm-expression: goods_$->{goods_type % 2}
+            key-generator-column-name: goods_id
+
+      props:
+        sql:
+          show: true
+
+    #tables:
+ #   goods:
+   #   actual-data-nodes: ds$->{0..1}.goods_$->{0..1}
+#
+  #    table-strategy:
+  #      inline:
+   #       sharding-column: goods_type
+  #        algorithm-expression: goods_$->{goods_type % 2}
+  #    key-generator-column-name: goods_id
