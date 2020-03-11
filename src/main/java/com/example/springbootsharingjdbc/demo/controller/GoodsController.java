@@ -83,4 +83,11 @@ public class GoodsController {
         goods.setGoodsId(30L);
         return goodsMapper.selectByGoodsName(goods);
     }
+
+    @GetMapping("selectByUserName")
+    public Object selectByUserName(){
+       Users user = new Users();
+        user.setName("shangpin5");
+        return usersMapper.selectByUserName(user);
+    }
 }
