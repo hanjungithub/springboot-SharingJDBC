@@ -25,4 +25,8 @@ public interface GoodsMapper {
     List<Goods> findAllByGoodsIdIn(List<Long> goodsIds);
 
     List<Goods> selectAll();
+
+    List<Goods> selectByGoodsName(Goods record);
+
+    List<Goods> selectByParams();
 }

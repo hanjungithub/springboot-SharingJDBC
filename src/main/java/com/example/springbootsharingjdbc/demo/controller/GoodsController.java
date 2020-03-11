@@ -4,9 +4,12 @@ import com.example.springbootsharingjdbc.demo.mapper.GoodsMapper;
 import com.example.springbootsharingjdbc.demo.mapper.UsersMapper;
 import com.example.springbootsharingjdbc.demo.model.Goods;
 import com.example.springbootsharingjdbc.demo.model.Users;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.shardingsphere.core.keygen.KeyGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -74,5 +77,26 @@ public class GoodsController {
         goodsIds.add(20L);
         goodsIds.add(25L);
         return goodsMapper.findAllByGoodsIdIn(goodsIds);
+    }
+
+    @GetMapping("selectByGoodsName")
+    public Object selectByGoodsName(){
+        Goods goods = new Goods();
+        goods.setGoodsName("shangpin30");
+        goods.setGoodsId(30L);
+        return goodsMapper.selectByGoodsName(goods);
+    }
+
+    @GetMapping("selectByUserName")
+    public Object selectByUserName(){
+       Users user = new Users();
+        user.setName("shangpin5");
+        return usersMapper.selectByUserName(user);
+    }
+
+    @RequestMapping("selectByPage")
+    public PageInfo selectByPage(){
+        PageHelper.startPage(2,2);
+        return new PageInfo(goodsMapper.selectByParams());
     }
 }
