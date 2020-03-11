@@ -37,8 +37,8 @@ sharding:
               #inline:
                 #sharding-column: goods_type
                 #algorithm-expression: goods_$->{goods_type % 2}
-            key-generator-column-name: goods_id
-
+            key-generator-column-name: snow_id
+            key-generator-class-name: com.example.springbootsharingjdbc.demo.config.MyKeyGenerator
       props:
         sql:
           show: true
