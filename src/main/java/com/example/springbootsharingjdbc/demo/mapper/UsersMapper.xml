@@ -64,4 +64,7 @@
     set `name` = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectByUserName" resultMap="BaseResultMap">
+    select * from users where users.name =#{name}
+  </select>
 </mapper>

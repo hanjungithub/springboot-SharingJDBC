@@ -27,4 +27,6 @@ public interface GoodsMapper {
     List<Goods> selectAll();
 
     List<Goods> selectByGoodsName(Goods record);
+
+    List<Goods> selectByParams();
 }

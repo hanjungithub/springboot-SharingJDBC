@@ -3,6 +3,8 @@ package com.example.springbootsharingjdbc.demo.mapper;
 
 import com.example.springbootsharingjdbc.demo.model.Users;
 
+import java.util.List;
+
 public interface UsersMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -15,4 +17,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    List<Users> selectByUserName(Users record);
 }
