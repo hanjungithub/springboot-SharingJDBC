@@ -42,13 +42,3 @@ sharding:
       props:
         sql:
           show: true
-
-    #tables:
- #   goods:
-   #   actual-data-nodes: ds$->{0..1}.goods_$->{0..1}
-#
-  #    table-strategy:
-  #      inline:
-   #       sharding-column: goods_type
-  #        algorithm-expression: goods_$->{goods_type % 2}
-  #    key-generator-column-name: goods_id

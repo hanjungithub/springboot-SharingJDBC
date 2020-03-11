@@ -6,7 +6,6 @@ import com.example.springbootsharingjdbc.demo.model.Goods;
 import com.example.springbootsharingjdbc.demo.model.Users;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.shardingsphere.core.keygen.KeyGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -6,7 +6,7 @@ spring:
     name: "base-project"
   profiles:
     #项目环境
-    active: dev
+    active: dev4.0-tables
   aop:
     #指定动态代理使用cglib方式endpoint
     proxy-target-class: true
